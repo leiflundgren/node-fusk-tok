@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "node-fusk-tok", "node-fusk-tok.njsproj", "{4433B9BA-2A27-4811-9907-F90F6563DFCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4433B9BA-2A27-4811-9907-F90F6563DFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4433B9BA-2A27-4811-9907-F90F6563DFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4433B9BA-2A27-4811-9907-F90F6563DFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4433B9BA-2A27-4811-9907-F90F6563DFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B861183-343F-4223-8C6A-1DE9BA115FD2}
+	EndGlobalSection
+EndGlobal
