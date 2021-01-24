@@ -1,0 +1,3 @@
+C:\repos\node-fusk-tok\obj\Debug\node-fusk-tok.njsprojAssemblyReference.cache
+C:\repos\node-fusk-tok\obj\Debug\node-fusk-tok.njsproj.CoreCompileInputs.cache
+C:\repos\node-fusk-tok\bin\Microsoft.NodejsTools.WebRole.dll

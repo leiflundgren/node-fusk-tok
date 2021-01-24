@@ -1,3 +1,5 @@
+require('fetch')
+
 
 class PageHandler {
 
@@ -16,7 +18,7 @@ class PageHandler {
 
         console.log("No retreive yet");
 
-        //const rsp = fetch(this.page_url)
+        const rsp = fetch(this.page_url)
         //console.log(rsp);
 
 
