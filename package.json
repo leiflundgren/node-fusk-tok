@@ -13,5 +13,9 @@
   "devDependencies": {
     "@types/node": "^8.0.14",
     "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "js-file-download": "^0.4.12"
   }
 }

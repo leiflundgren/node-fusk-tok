@@ -2,10 +2,18 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "lib": ["es6", "DOM"],
-    "sourceMap": true
+    "lib": [ "es6", "DOM" ],
+    "sourceMap": true,
+
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [ "src/*" ]
+    }
+
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".vs"
   ]
 }
