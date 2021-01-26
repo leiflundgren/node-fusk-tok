@@ -25,32 +25,21 @@ obj/x64
 
 backup*.zip
 *.VC.db
-/ACS/TAS/Properties/AssemblyInfo.cs
-/pushsymbols_TAS.cmd
 *.zip
-/ACS/TAS/bin/TAS_Leif_9.3.120.3_pdb
 *.sqlite
 /.vs/slnx.sqlite-journal
 /.vs
 *.patch
-/ACS/TAS/TAS_B146.sln
 */packages/*
-/Use_*.reg
 */**/*.coverage
 */**/UpgradeLog.htm
 ~*.*
 net20
-NUnit.3.4.1
+NUnit.*
 /NuGetPackages
-/ACS/TAS/TestTools/ReadLogMonitorState/bin/ReadLogMonitorState
-/ACS/TAS/bin
-/ACS/TestTools/MediaServerTest/bin
-/ACS/TAS/TAS.csproj.user
 *.user
-/MediaServerTest
 /packages
 /bin
-/ACS/ACSConfig/bin
 *.bak
 
 # Generated directories:
