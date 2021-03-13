@@ -86,7 +86,8 @@ async function update_existing(target_path: string, target_file_prefix:string) {
     const download = new DownloadTask(start_fetch_at, target_path, target_file_prefix);
     await download.download();
 
-    if (download.last_successful_number > 0) {
+    // if (download.last_successful_number > 0)
+    {
 
         if (existing_html.length > 0) {
             const last_html = existing_html[existing_html.length - 1];

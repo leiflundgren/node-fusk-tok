@@ -76,17 +76,18 @@ export class GenerateWebPages {
         html += '</head>\n';
         html += '<body>';
         html += '<p>';
+        var next_href=''
         if (prev) {
             prev = this.change_html_ext(path.basename(prev));
             html += `<a href="${prev}">Prev ${prev}</a>&nbsp;&nbsp;&nbsp;\n`;
         }
         if (next) {
-            next = this.change_html_ext(path.basename(next));
-            html += `<a href="${next}">next ${next}</a>&nbsp;&nbsp;&nbsp;\n`;
+            next_href = `href="${this.hrefifyPath(this.change_html_ext(next))}"`;
+            html += `<a ${next_href}">next ${next}</a>&nbsp;&nbsp;&nbsp;\n`;
         }
         html += '</p>\n';
 
-        html += `<p><<a href="${this.hrefifyPath(this.change_html_ext(next))}" border="0"><img src=${this.hrefifyPath(curr)} /></a></p>`;
+        html += `<p><a ${next_href} border="0"><img src=${this.hrefifyPath(curr)} /></a></p>`;
         html += "</body>\n";
         html += "</html>\n";
         return html;
@@ -121,7 +122,10 @@ export class GenerateWebPages {
     async make_image_page(n: number) {
         const curr_file = this.files[n];
         const prev_file = (n > 0 ? this.files[n - 1] : null);
-        const next_file = ((n + 1) < this.files.length  ? this.files[n + 1] : null);
+        const next_file = ((n + 1) < this.files.length ? this.files[n + 1] : null);
+        if (!next_file) {
+            const bp = 17;
+        }
 
         const filename = path.join(this.target_folder, this.change_html_ext(curr_file));
 
