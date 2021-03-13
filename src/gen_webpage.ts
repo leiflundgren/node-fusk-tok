@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-// import { promises as fs_promises } from 'fs';
 import * as path from 'path';
 import { FsWrapper } from './fs-wrapper';
 
@@ -7,62 +6,25 @@ import { FsWrapper } from './fs-wrapper';
 export class GenerateWebPages {
 
     files: string[];
-    html = '';
-    names = [];
     target_folder: string;
-    
+    display_name: string;
 
-    constructor(target_folder: string, args: string[]) {
-        this.files = [];
+    constructor(target_folder: string, display_name: string, args: string[]) {
+
         this.target_folder = target_folder;
-       
-        
+        this.display_name = display_name;
 
+        this.files = fs.readdirSync(this.target_folder)
+            .filter(fn => {
+                const ext = path.extname(fn);
+                return args.includes(ext);
+            })
+            .sort()
+            ;
 
-        function match_wildcard(filename: string , pattern: string ): boolean {
-            function match_wildcard(filename: string, fpos: number, pattern: string, ppos: number): boolean {
-                if (filename.length === fpos && pattern.length === ppos) {
-                    return true;
-                }
-
-                if (filename.length === fpos || pattern.length === ppos) {
-                    return false;
-                }
-
-                if (filename[fpos] == pattern[ppos]) {
-                    return match_wildcard(filename, 1 + fpos, pattern, 1 + ppos);
-                }
-                if (pattern[ppos] === '*') {
-                    return match_wildcard(filename, 1 + fpos, pattern, ppos) || match_wildcard(filename, fpos, pattern, 1 + ppos);
-                }
-
-                return false;
-            }
-
-            return match_wildcard(filename, 0, pattern, 0);
-        }
-
-        args.forEach(g => {
-            const dir = path.dirname(g);
-            const filepat = path.basename(g);
-
-
-            const all_files = fs.readdirSync(dir);
-            this.files = all_files.filter(fn => match_wildcard(path.basename(fn), filepat));
-
-            //const matches = glob.sync(g)
-            //this.files.concat(matches);            
-
-            var name = filepat;
-            const star = filepat.indexOf('*');
-            if (star > 0) {
-                name = name.substring(0, star);
-            }
-            this.names.push(name);
-        });
-
-        console.log(`Will generate web for ${this.files.length} files names:[${this.names}]`);
+        console.log(`Will generate web for ${this.files.length} files`);
     }
+
 
     escapeHtml(s: string): string {
         return s.
@@ -135,7 +97,7 @@ export class GenerateWebPages {
         console.log(`Generating index-page for ${this.files.length} files`);
 
         var html = '<html><head><title>';
-        html += this.escapeHtml(this.names.join('  '));
+        html += this.escapeHtml(this.display_name);
         html += "</title></head>\n";
         html += '<body>\n';
         html += this.files.map(f => `<p><a href="${this.hrefifyPath(path.basename(this.change_html_ext(f)))}">${f}</a></p>\n`).join('');

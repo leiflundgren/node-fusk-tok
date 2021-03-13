@@ -52,3 +52,4 @@ node_modules/
 *.sublime-*
 /.vs
 *.jpg
+/bin
