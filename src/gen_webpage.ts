@@ -1,7 +1,10 @@
 import * as fs from 'fs';
+//import * as fsPromises from 'fs/promises';
+// import { promises as fsp } from 'fs';
 import * as path from 'path';
 import { FsWrapper } from './fs-wrapper';
-
+const jfsp = require("fs/promises");
+// import *  as fsp from "fs/promises";
 
 export class GenerateWebPages {
 
@@ -120,18 +123,29 @@ export class GenerateWebPages {
 
 
     async make_image_page(n: number) {
+
         const curr_file = this.files[n];
         const prev_file = (n > 0 ? this.files[n - 1] : null);
         const next_file = ((n + 1) < this.files.length ? this.files[n + 1] : null);
-        if (!next_file) {
-            const bp = 17;
-        }
 
         const filename = path.join(this.target_folder, this.change_html_ext(curr_file));
 
-        const html = this.generate_page_html(prev_file, curr_file, next_file);
-        await FsWrapper.writeFile(filename, html);
-        console.log(`saved image-page for ${filename} `);
+        fs.access(filename, (err) => {
+            if (!err) {
+                console.log(`image-page for ${filename} already existed`);
+            } else {
+                const html = this.generate_page_html(prev_file, curr_file, next_file);
+
+                fs.writeFile(filename, html, (err) => {
+                    if (err) {
+                        console.log(`failed to save ${filename}: ${err}`);
+                    }
+                    else {
+                        console.log(`saved image-page for ${filename} `);
+                    }
+                });
+            }
+        });
     }
 
     make_all_image_pages() {
