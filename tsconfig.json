@@ -2,13 +2,16 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "lib": [ "es6", "DOM" ],
+    "lib": [ "es2017", "DOM" ],
+    "types": [ "node" ],
     "sourceMap": true,
+    "strict": false,
+    "skipLibCheck": true,
 
+    "rootDir": "src",
     "outDir": "dist",
-    "baseUrl": ".",
     "paths": {
-      "@/*": [ "src/*" ]
+      "@/*": [ "./src/*" ]
     }
 
   },
